@@ -1,44 +1,4 @@
-.login-register-wrapper .login-register-tab-list {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	margin-bottom: 40px;
-}
-.login-register-wrapper .login-register-tab-list a {
-	position: relative;
-}
-.login-register-wrapper .login-register-tab-list a::before {
-	background-color: #454545;
-	bottom: 5px;
-	content: '';
-	height: 18px;
-	margin: 0 auto;
-	position: absolute;
-	right: -2px;
-	-webkit-transition: all 0.4s ease 0s;
-	-o-transition: all 0.4s ease 0s;
-	transition: all 0.4s ease 0s;
-	width: 1px;
-}
-.login-register-wrapper .login-register-tab-list a h4 {
-	font-size: 25px;
-	font-weight: 700;
-	margin: 0 20px;
-	text-transform: capitalize;
-	-webkit-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-}
-.login-register-wrapper .login-register-tab-list a:last-child::before {
-	display: none;
-}
-.login-register-wrapper .login-register-tab-list a.active h4 {
-	color: #a749ff;
-}
-.login-register-wrapper .login-form-container {
+.login-form-container {
 	background: transparent none repeat scroll 0 0;
 	-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
@@ -46,16 +6,16 @@
 	text-align: left;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-	.login-register-wrapper .login-form-container {
+	.login-form-container {
 		padding: 80px 50px;
 	}
 }
 @media only screen and (max-width: 767px) {
-	.login-register-wrapper .login-form-container {
+	.login-form-container {
 		padding: 40px 15px;
 	}
 }
-.login-register-wrapper .login-form-container .login-register-form form input {
+.login-form-container .login-register-form form input {
 	background-color: transparent;
 	border: 1px solid #ebebeb;
 	color: #333;
@@ -64,27 +24,27 @@
 	margin-bottom: 30px;
 	padding: 0 15px;
 }
-.login-register-wrapper .login-form-container .login-register-form form input[type='checkbox'] {
+.login-form-container .login-register-form form input[type='checkbox'] {
 	height: 15px;
 	margin: 0;
 	position: relative;
 	top: 1px;
 	width: 17px;
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn {
+.login-form-container .login-register-form form .button-box .login-toggle-btn {
 	padding: 10px 0 19px;
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn label {
+.login-form-container .login-register-form form .button-box .login-toggle-btn label {
 	color: #242424;
 	font-size: 15px;
 	font-weight: 400;
 }
 @media only screen and (max-width: 767px) {
-	.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn label {
+	.login-form-container .login-register-form form .button-box .login-toggle-btn label {
 		font-size: 14px;
 	}
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn a {
+.login-form-container .login-register-form form .button-box .login-toggle-btn a {
 	color: #242424;
 	float: right;
 	font-size: 15px;
@@ -93,14 +53,14 @@
 	transition: all 0.3s ease 0s;
 }
 @media only screen and (max-width: 767px) {
-	.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn a {
+	.login-form-container .login-register-form form .button-box .login-toggle-btn a {
 		font-size: 14px;
 	}
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box .login-toggle-btn a:hover {
+.login-form-container .login-register-form form .button-box .login-toggle-btn a:hover {
 	color: #a749ff;
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box button {
+.login-form-container .login-register-form form .button-box button {
 	background-color: #f2f2f2;
 	border: medium none;
 	color: #333;
@@ -114,7 +74,7 @@
 	-o-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
-.login-register-wrapper .login-form-container .login-register-form form .button-box button:hover {
+.login-form-container .login-register-form form .button-box button:hover {
 	background-color: #a749ff;
 	color: #fff;
 }
