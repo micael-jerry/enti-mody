@@ -38,9 +38,16 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/icons.min.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/plugins.js",
+              "src/assets/js/ajax-mail.js",
+              "assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
