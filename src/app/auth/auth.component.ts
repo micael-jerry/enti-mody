@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { BreadcrumbComponent } from "../layout/breadcrumb/breadcrumb.component";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
 
 @Component({
 	selector: 'app-auth',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './auth.component.html',
-	imports: [BreadcrumbComponent]
+	imports: [BreadcrumbComponent],
 })
-export class AuthComponent { }
+export class AuthComponent {}
