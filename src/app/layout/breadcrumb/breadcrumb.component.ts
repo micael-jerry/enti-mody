@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-breadcrumb',
@@ -7,5 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	templateUrl: './breadcrumb.component.html',
 })
 export class BreadcrumbComponent {
-	title = 'login/Register';
+	@Input({ required: false })
+	value: string | null = null;
 }
