@@ -5,7 +5,8 @@ import { BreadcrumbComponent } from '../../layout/breadcrumb/breadcrumb.componen
 	selector: 'app-auth-login',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './auth-login.component.html',
 	imports: [BreadcrumbComponent],
+	templateUrl: './auth-login.component.html',
+	styleUrl: './auth-login.component.css',
 })
 export class AuthLoginComponent {}
