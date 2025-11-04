@@ -3,9 +3,11 @@
 		<div class="breadcrumb-content text-center">
 			<ul>
 				<li>
-					<a href="index.html">Home</a>
+					<a routerLink="/">Home</a>
 				</li>
-				<li class="active">{{ value }}</li>
+				@for (path of pathArray; track $index) {
+					<li class="active">{{ path }}</li>
+				}
 			</ul>
 		</div>
 	</div>
