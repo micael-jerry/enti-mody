@@ -5,7 +5,8 @@ import { RouterLink } from '@angular/router';
 	selector: 'app-header',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './header.component.html',
 	imports: [RouterLink],
+	templateUrl: './header.component.html',
+	styleUrl: './header.component.css',
 })
 export class HeaderComponent {}
