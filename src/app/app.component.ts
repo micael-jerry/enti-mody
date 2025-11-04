@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
 
 @Component({
 	selector: 'app-root',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.css',
+	imports: [RouterOutlet, LayoutComponent],
 })
-export class AppComponent {
-	title = 'enti-mody';
-}
+export class AppComponent {}
