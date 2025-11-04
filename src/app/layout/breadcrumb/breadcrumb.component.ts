@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-breadcrumb',
@@ -7,6 +8,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 	templateUrl: './breadcrumb.component.html',
 })
 export class BreadcrumbComponent {
-	@Input({ required: false })
-	value: string | null = null;
+	private readonly router = inject(Router);
+	value: string = this.router.url;
 }
