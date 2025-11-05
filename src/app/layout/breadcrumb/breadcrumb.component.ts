@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class BreadcrumbComponent {
 	private readonly router = inject(Router);
-	pathArray: string[] = this.getPathArray(this.router.url);
+	readonly pathArray = signal(this.getPathArray(this.router.url));
 
 	private getPathArray(url: string): string[] {
 		return url.split('/').filter((path) => path.length > 0);
