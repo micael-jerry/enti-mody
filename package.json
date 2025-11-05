@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"src/**/*.css\""
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"src/**/*.css\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"src/**/*.html\" \"src/**/*.css\"",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -28,12 +30,15 @@
     "@angular-eslint/builder": "20.5.1",
     "@angular/cli": "^19.2.19",
     "@angular/compiler-cli": "^19.2.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.38.0",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "20.5.1",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
