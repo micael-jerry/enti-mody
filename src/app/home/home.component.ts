@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +6,6 @@ import { RouterLink } from '@angular/router';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 	templateUrl: './home.component.html',
-	imports: [BreadcrumbComponent, RouterLink],
+	imports: [RouterLink],
 })
 export class HomeComponent {}
