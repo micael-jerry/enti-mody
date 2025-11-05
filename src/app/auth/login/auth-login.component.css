@@ -60,11 +60,9 @@
 .login-form-container .login-register-form form .button-box .login-toggle-btn a:hover {
 	color: #a749ff;
 }
-.login-form-container .login-register-form form .button-box button {
-	background-color: #f2f2f2;
+
+.login-form-button {
 	border: medium none;
-	color: #333;
-	cursor: pointer;
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 1;
@@ -74,7 +72,21 @@
 	-o-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
-.login-form-container .login-register-form form .button-box button:hover {
+
+.login-form-button:enabled {
+	background-color: #f2f2f2;
+	color: #333;
+	cursor: pointer;
+}
+
+.login-form-button:disabled {
+	background-color: #e0e0e0;
+	color: #999;
+	cursor: not-allowed;
+	opacity: 0.8;
+}
+
+.login-form-button:enabled:hover {
 	background-color: #a749ff;
 	color: #fff;
 }
@@ -83,4 +95,16 @@
 	.login-register-area.pb-100 {
 		padding-bottom: 60px;
 	}
+}
+
+.error-message {
+	color: #dc3545;
+	font-size: 0.875rem;
+	margin: -20px 0 20px;
+	display: block;
+}
+
+.form-group {
+	position: relative;
+	margin-bottom: 30px;
 }

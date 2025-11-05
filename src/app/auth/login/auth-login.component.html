@@ -1,17 +1,26 @@
 <div class="tab-pane active" id="lg1">
 	<div class="login-form-container">
 		<div class="login-register-form">
-			<form action="#" method="post">
-				<input name="user-name" placeholder="Username" type="text" />
-				<input name="user-password" placeholder="Password" type="password" />
+			<form [formGroup]="authForm" (ngSubmit)="onAuthFormSubmit()">
+				<div class="form-group">
+					<input formControlName="email" placeholder="Email" type="text" />
+					@for (emailError of getAuthFormError().email; track $index) {
+						<span class="error-message">{{ emailError }}</span>
+					}
+				</div>
+				<div class="form-group">
+					<input formControlName="password" placeholder="Password" type="password" />
+					@for (pwdError of getAuthFormError().password; track $index) {
+						<span class="error-message">{{ pwdError }}</span>
+					}
+				</div>
 				<div class="button-box">
 					<div class="login-toggle-btn">
-						<input type="checkbox" />
-						<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
-						<label>Remember me</label>
+						<label for="forgot-password">Remember me</label>
+						<input disabled name="forgot-password" type="checkbox" />
 						<a href="#">Forgot Password?</a>
 					</div>
-					<button type="submit"><span>Login</span></button>
+					<button class="login-form-button" type="submit" [disabled]="authForm.invalid">Login</button>
 				</div>
 			</form>
 		</div>
