@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AUTH_ROUTES } from './auth/auth.route';
+import { HomeComponent } from './features/home/home.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
+import { AUTH_ROUTES } from './features/auth/auth.route';
 
 export const routes: Routes = [
 	...AUTH_ROUTES,
