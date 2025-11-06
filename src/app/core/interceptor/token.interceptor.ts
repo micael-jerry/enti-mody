@@ -1,13 +1,11 @@
 import { HttpEvent, HttpHandlerFn, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../service/auth.service';
-import { AUTH_TOKEN_REQUEST_HEADER } from '../../shared/constants';
+import { AUTH_TOKEN_KEY, AUTH_TOKEN_REQUEST_HEADER } from '../../shared/constants';
+import { LocalStorageUtil } from '../../shared/utils/local-storage.util';
 
 export const tokenInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
-	const authService = inject(AuthService);
+	const token: string | null = LocalStorageUtil.getItem(AUTH_TOKEN_KEY);
 
-	const token: string | null = authService.token;
 	if (!token) {
 		return next(req);
 	}
