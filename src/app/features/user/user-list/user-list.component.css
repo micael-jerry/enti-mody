@@ -1,0 +1,55 @@
+@media only screen and (max-width: 767px) {
+	.pro-pagination-style.mt-30 {
+		margin-top: 10px;
+	}
+}
+.pro-pagination-style ul li {
+	display: inline-block;
+	margin: 0 4px;
+}
+.pro-pagination-style ul li button {
+	display: inline-block;
+	width: 43px;
+	height: 43px;
+	text-align: center;
+	line-height: 43px;
+	font-size: 16px;
+	border-radius: 100%;
+	color: #a749ff;
+	border: none;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0px 12px 0.8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0px 12px 0.8px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+.pro-pagination-style ul li button:hover:not(:disabled) {
+	background-color: #a749ff;
+	color: #fff;
+}
+.pro-pagination-style ul li button.active {
+	background-color: #a749ff;
+	color: #fff;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.pro-pagination-style ul li button.active:hover:not(:disabled) {
+	background-color: #333;
+}
+.pro-pagination-style ul li button.prev,
+.pro-pagination-style ul li button.next {
+	background-color: #f6f6f6;
+	color: #a749ff;
+	font-size: 17px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.pro-pagination-style ul li button.prev:hover:not(:disabled),
+.pro-pagination-style ul li button.next:hover:not(:disabled) {
+	background-color: #a749ff;
+	color: #fff;
+}
+.pro-pagination-style ul li button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background-color: #f6f6f6;
+}
