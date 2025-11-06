@@ -23,7 +23,11 @@ import { NgOptimizedImage } from '@angular/common';
 export class UserListComponent implements OnInit {
 	private readonly userService: UserService = inject(UserService);
 
-	readonly users: WritableSignal<User[]> = signal([]);
+	readonly fetchedUsers: WritableSignal<User[]> = signal([]);
+	readonly searchQuery: WritableSignal<string> = signal('');
+	readonly users: Signal<User[]> = computed(() =>
+		this.filterUsersWithSearchQuery(this.fetchedUsers(), this.searchQuery()),
+	);
 
 	readonly PAGE_SIZE = 10;
 	readonly currentPage = signal(1);
@@ -40,8 +44,12 @@ export class UserListComponent implements OnInit {
 
 	async ngOnInit(): Promise<void> {
 		const users: User[] = await this.userService.getUsers();
-		this.users.set(users);
-		this.currentPage.set(1);
+		this.fetchedUsers.set(users);
+	}
+
+	filterUsersWithSearchQuery(userList: User[], query: string): User[] {
+		const q = query.toLocaleLowerCase();
+		return userList.filter((user) => (user.name + user.email).toLocaleLowerCase().includes(q));
 	}
 
 	formatUserRoles(roles: Role[]): string {
