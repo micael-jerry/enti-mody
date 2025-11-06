@@ -20,7 +20,11 @@ export class AuthService {
 		return loginResponse;
 	}
 
-	isAuthenticated(): boolean {
-		return LocalStorageUtil.getItem(AUTH_TOKEN_KEY) !== null;
+	logout(): void {
+		LocalStorageUtil.removeItem(AUTH_TOKEN_KEY);
+	}
+
+	get token(): string | null {
+		return LocalStorageUtil.getItem(AUTH_TOKEN_KEY);
 	}
 }
