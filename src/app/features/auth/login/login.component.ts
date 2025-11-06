@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { AuthLoginDto } from '../../../core/dto/login.dto';
 import { Router } from '@angular/router';
@@ -24,6 +24,7 @@ export class LoginComponent {
 	});
 
 	async onAuthFormSubmit(): Promise<void> {
+		this.formSubmitError.set(null);
 		this.authService
 			.login(this.authForm.value as AuthLoginDto)
 			.then(async () => {
@@ -34,24 +35,11 @@ export class LoginComponent {
 			});
 	}
 
-	getAuthFormError(): { email: string[]; password: string[] } {
-		const errors: { email: string[]; password: string[] } = { email: [], password: [] };
-		const emailFormControl = this.authForm.get('email') as FormControl;
-		const passwordFormControl = this.authForm.get('password') as FormControl;
+	get emailControl(): AbstractControl<string | null> | null {
+		return this.authForm.get('email');
+	}
 
-		if (emailFormControl.hasError('required')) {
-			errors.email.push('Email is required');
-		}
-		if (emailFormControl.hasError('email')) {
-			errors.email.push('Email is invalid');
-		}
-		if (passwordFormControl.hasError('required')) {
-			errors.password.push('Password is required');
-		}
-		if (passwordFormControl.hasError('min')) {
-			errors.password.push('Password must be at least 5 characters long');
-		}
-
-		return errors;
+	get passwordControl(): AbstractControl<string | null> | null {
+		return this.authForm.get('password');
 	}
 }
