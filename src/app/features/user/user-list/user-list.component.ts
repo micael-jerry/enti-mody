@@ -25,9 +25,7 @@ export class UserListComponent implements OnInit {
 
 	readonly fetchedUsers: WritableSignal<User[]> = signal([]);
 	readonly searchQuery: WritableSignal<string> = signal('');
-	readonly users: Signal<User[]> = computed(() =>
-		this.filterUsersWithSearchQuery(this.fetchedUsers(), this.searchQuery()),
-	);
+	readonly users: WritableSignal<User[]> = signal([]);
 
 	readonly PAGE_SIZE = 10;
 	readonly currentPage = signal(1);
@@ -45,11 +43,18 @@ export class UserListComponent implements OnInit {
 	async ngOnInit(): Promise<void> {
 		const users: User[] = await this.userService.getUsers();
 		this.fetchedUsers.set(users);
+		this.users.set(users);
 	}
 
-	filterUsersWithSearchQuery(userList: User[], query: string): User[] {
-		const q = query.toLocaleLowerCase();
-		return userList.filter((user) => (user.name + user.email).toLocaleLowerCase().includes(q));
+	onSearchQueryInput(searchQuery: string): void {
+		this.searchQuery.set(searchQuery);
+		this.currentPage.set(1);
+
+		const queryIgnoreCase = searchQuery.toLocaleLowerCase();
+		const filteredUsers = this.fetchedUsers().filter((user) =>
+			(user.name + user.email).toLocaleLowerCase().includes(queryIgnoreCase),
+		);
+		this.users.set(filteredUsers);
 	}
 
 	formatUserRoles(roles: Role[]): string {
