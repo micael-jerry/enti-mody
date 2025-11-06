@@ -6,6 +6,7 @@ import { AuthService } from '../../core/service/auth.service';
 	selector: 'app-auth',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [RouterLink, RouterOutlet, RouterLinkActive],
+	providers: [AuthService],
 	templateUrl: './auth.component.html',
 	styleUrl: './auth.component.css',
 })

@@ -20,7 +20,12 @@
 						<input disabled name="forgot-password" type="checkbox" />
 						<a href="#">Forgot Password?</a>
 					</div>
-					<button class="login-form-button" type="submit" [disabled]="authForm.invalid">Login</button>
+					<div class="form-group">
+						<button class="login-form-button mb-5" type="submit" [disabled]="authForm.invalid">Login</button>
+						@if (formSubmitError() !== null) {
+							<span class="error-message">{{ formSubmitError() }}</span>
+						}
+					</div>
 				</div>
 			</form>
 		</div>
