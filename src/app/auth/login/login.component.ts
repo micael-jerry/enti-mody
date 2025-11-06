@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthLoginModel } from '../../shared/model/auth-login.model';
-import { AuthService } from '../../shared/service/auth.service';
+import { AuthLoginDto } from '../../core/dto/login.dto';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent {
 	});
 
 	onAuthFormSubmit(): void {
-		this.authService.login(this.authForm.value as AuthLoginModel).subscribe((response) => {
+		this.authService.login(this.authForm.value as AuthLoginDto).subscribe((response) => {
 			console.log(response);
 		});
 	}

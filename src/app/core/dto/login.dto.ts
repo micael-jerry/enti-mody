@@ -1,6 +1,6 @@
-import { User } from './user.model';
+import { User } from '../model/user.model';
 
-export type AuthLoginModel = {
+export type AuthLoginDto = {
 	email: string;
 	password: string;
 };
