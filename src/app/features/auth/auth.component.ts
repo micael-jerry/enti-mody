@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
 	selector: 'app-auth',
@@ -9,4 +10,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 	templateUrl: './auth.component.html',
 	styleUrl: './auth.component.css',
 })
-export class AuthComponent {}
+export class AuthComponent implements OnInit {
+	private readonly router: Router = inject(Router);
+	private readonly authService: AuthService = inject(AuthService);
+
+	ngOnInit(): void {
+		if (this.authService.isAuthenticated()) {
+			this.router.navigate(['/user/list']);
+		}
+	}
+}
