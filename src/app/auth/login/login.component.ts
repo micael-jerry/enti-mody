@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../shared/service/auth.service';
 import { AuthLoginModel } from '../../shared/model/auth-login.model';
+import { AuthService } from '../../shared/service/auth.service';
 
 @Component({
-	selector: 'app-auth-login',
+	selector: 'app-login',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [ReactiveFormsModule],
 	providers: [AuthService],
-	templateUrl: './auth-login.component.html',
-	styleUrl: './auth-login.component.css',
+	templateUrl: './login.component.html',
+	styleUrl: './login.component.css',
 })
-export class AuthLoginComponent {
+export class LoginComponent {
 	private readonly authService: AuthService = inject(AuthService);
 	readonly authForm = new FormGroup({
 		email: new FormControl('', [Validators.required, Validators.email]),
