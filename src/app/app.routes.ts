@@ -1,21 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AuthLoginComponent } from './auth/login/auth-login.component';
-import { AuthComponent } from './auth/auth.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import { HomeComponent } from './features/home/home.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
+import { AUTH_ROUTES } from './features/auth/auth.route';
+import { USER_ROUTES } from './features/user/user.route';
+import { guestGuard } from './core/guard/guest.guard';
 
 export const routes: Routes = [
-	{
-		path: 'auth',
-		component: AuthComponent,
-		children: [
-			{ path: 'login', component: AuthLoginComponent, pathMatch: 'full' },
-			{ path: 'register', component: UnderConstructionComponent, pathMatch: 'full' },
-			{ path: '', redirectTo: 'login', pathMatch: 'full' },
-		],
-	},
-	{ path: 'home', component: HomeComponent },
+	...AUTH_ROUTES,
+	...USER_ROUTES,
+	{ path: 'home', component: HomeComponent, canActivate: [guestGuard] },
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: '**', component: NotFoundComponent },
 ];

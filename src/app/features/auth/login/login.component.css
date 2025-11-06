@@ -1,0 +1,110 @@
+.login-form-container {
+	background: transparent none repeat scroll 0 0;
+	-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+	padding: 80px;
+	text-align: left;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.login-form-container {
+		padding: 80px 50px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.login-form-container {
+		padding: 40px 15px;
+	}
+}
+.login-form-container .login-register-form form input {
+	background-color: transparent;
+	border: 1px solid #ebebeb;
+	color: #333;
+	font-size: 14px;
+	height: 45px;
+	margin-bottom: 30px;
+	padding: 0 15px;
+}
+.login-form-container .login-register-form form input[type='checkbox'] {
+	height: 15px;
+	margin: 0;
+	position: relative;
+	top: 1px;
+	width: 17px;
+}
+.login-form-container .login-register-form form .button-box .login-toggle-btn {
+	padding: 10px 0 19px;
+}
+.login-form-container .login-register-form form .button-box .login-toggle-btn label {
+	color: #242424;
+	font-size: 15px;
+	font-weight: 400;
+}
+@media only screen and (max-width: 767px) {
+	.login-form-container .login-register-form form .button-box .login-toggle-btn label {
+		font-size: 14px;
+	}
+}
+.login-form-container .login-register-form form .button-box .login-toggle-btn a {
+	color: #242424;
+	float: right;
+	font-size: 15px;
+	-webkit-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+@media only screen and (max-width: 767px) {
+	.login-form-container .login-register-form form .button-box .login-toggle-btn a {
+		font-size: 14px;
+	}
+}
+.login-form-container .login-register-form form .button-box .login-toggle-btn a:hover {
+	color: #a749ff;
+}
+
+.login-form-button {
+	border: medium none;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	padding: 11px 30px;
+	text-transform: uppercase;
+	-webkit-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+.login-form-button:enabled {
+	background-color: #f2f2f2;
+	color: #333;
+	cursor: pointer;
+}
+
+.login-form-button:disabled {
+	background-color: #e0e0e0;
+	color: #999;
+	cursor: not-allowed;
+	opacity: 0.8;
+}
+
+.login-form-button:enabled:hover {
+	background-color: #a749ff;
+	color: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+	.login-register-area.pb-100 {
+		padding-bottom: 60px;
+	}
+}
+
+.error-message {
+	color: #dc3545;
+	font-size: 0.875rem;
+	margin: -20px 0 20px;
+	display: block;
+}
+
+.form-group {
+	position: relative;
+	margin-bottom: 30px;
+}

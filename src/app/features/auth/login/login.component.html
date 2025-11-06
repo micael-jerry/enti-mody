@@ -1,0 +1,33 @@
+<div class="tab-pane active" id="lg1">
+	<div class="login-form-container">
+		<div class="login-register-form">
+			<form [formGroup]="authForm" (ngSubmit)="onAuthFormSubmit()">
+				<div class="form-group">
+					<input formControlName="email" placeholder="Email" type="text" />
+					@for (emailError of getAuthFormError().email; track $index) {
+						<span class="error-message">{{ emailError }}</span>
+					}
+				</div>
+				<div class="form-group">
+					<input formControlName="password" placeholder="Password" type="password" />
+					@for (pwdError of getAuthFormError().password; track $index) {
+						<span class="error-message">{{ pwdError }}</span>
+					}
+				</div>
+				<div class="button-box">
+					<div class="login-toggle-btn">
+						<label for="forgot-password">Remember me</label>
+						<input disabled name="forgot-password" type="checkbox" />
+						<a href="#">Forgot Password?</a>
+					</div>
+					<div class="form-group">
+						<button class="login-form-button mb-5" type="submit" [disabled]="authForm.invalid">Login</button>
+						@if (formSubmitError() !== null) {
+							<span class="error-message">{{ formSubmitError() }}</span>
+						}
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
