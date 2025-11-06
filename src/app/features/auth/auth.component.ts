@@ -4,7 +4,6 @@ import { AuthService } from '../../core/service/auth.service';
 
 @Component({
 	selector: 'app-auth',
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [RouterLink, RouterOutlet, RouterLinkActive],
 	templateUrl: './auth.component.html',

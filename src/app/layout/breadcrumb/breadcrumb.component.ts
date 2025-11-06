@@ -4,7 +4,6 @@ import { filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-breadcrumb',
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [RouterLink],
 	templateUrl: './breadcrumb.component.html',

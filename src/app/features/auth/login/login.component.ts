@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [ReactiveFormsModule],
 	providers: [AuthService],
