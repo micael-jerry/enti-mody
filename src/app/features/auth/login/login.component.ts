@@ -29,9 +29,8 @@ export class LoginComponent {
 			.then(async () => {
 				await this.router.navigate(['/user/list']);
 			})
-			.catch((err) => {
+			.catch(() => {
 				this.formSubmitError.set('Login failed. Please check your credentials and try again.');
-				console.error('Login failed', err);
 			});
 	}
 
