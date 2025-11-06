@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit {
 	private readonly authService: AuthService = inject(AuthService);
 
 	ngOnInit(): void {
-		if (!this.authService.token) {
+		if (this.authService.token) {
 			this.router.navigate(['/user/list']);
 		}
 	}
