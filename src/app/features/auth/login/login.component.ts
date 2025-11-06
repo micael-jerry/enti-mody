@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { AuthLoginDto } from '../../../core/dto/login.dto';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -13,16 +14,17 @@ import { AuthLoginDto } from '../../../core/dto/login.dto';
 	styleUrl: './login.component.css',
 })
 export class LoginComponent {
+	private readonly router: Router = inject(Router);
 	private readonly authService: AuthService = inject(AuthService);
+
 	readonly authForm = new FormGroup({
 		email: new FormControl('', [Validators.required, Validators.email]),
 		password: new FormControl('', [Validators.required, Validators.min(5)]),
 	});
 
-	onAuthFormSubmit(): void {
-		this.authService.login(this.authForm.value as AuthLoginDto).subscribe((response) => {
-			console.log(response);
-		});
+	async onAuthFormSubmit(): Promise<void> {
+		await this.authService.login(this.authForm.value as AuthLoginDto);
+		await this.router.navigate(['/user/list']);
 	}
 
 	getAuthFormError(): { email: string[]; password: string[] } {
