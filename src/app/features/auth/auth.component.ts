@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../core/service/auth.service';
 import { LoginComponent } from './login/login.component';
-import { UnderConstructionComponent } from '../under-construction/under-construction.component';
+import { UnderConstructionComponent } from '../../shared/components/under-construction/under-construction.component';
 import { AuthLoginDto } from '../../core/dto/login.dto';
 import { Router } from '@angular/router';
 
