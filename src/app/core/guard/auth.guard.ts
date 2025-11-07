@@ -8,7 +8,7 @@ export const authGuard = async (): Promise<boolean> => {
 
 	const token: string | null = LocalStorageUtil.getItem(AUTH_TOKEN_KEY);
 	if (!token) {
-		await router.navigate(['/auth/login']);
+		await router.navigate(['/auth']);
 		return false;
 	}
 	return true;

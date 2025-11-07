@@ -7,10 +7,18 @@
 	justify-content: center;
 	margin-bottom: 40px;
 }
-.login-register-wrapper .login-register-tab-list a {
+.login-register-wrapper .login-register-tab-list button {
 	position: relative;
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
-.login-register-wrapper .login-register-tab-list a::before {
+.login-register-wrapper .login-register-tab-list button::before {
 	background-color: #454545;
 	bottom: 5px;
 	content: '';
@@ -23,7 +31,7 @@
 	transition: all 0.4s ease 0s;
 	width: 1px;
 }
-.login-register-wrapper .login-register-tab-list a h4 {
+.login-register-wrapper .login-register-tab-list button h4 {
 	font-size: 25px;
 	font-weight: 700;
 	margin: 0 20px;
@@ -32,13 +40,19 @@
 	-o-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
-.login-register-wrapper .login-register-tab-list a:last-child::before {
+.login-register-wrapper .login-register-tab-list button:last-child::before {
 	display: none;
 }
-.login-register-wrapper .login-register-tab-list a.active h4 {
+.login-register-wrapper .login-register-tab-list button.active h4 {
 	color: #a749ff;
 }
-
+.login-register-wrapper .login-register-tab-list button:focus {
+	outline: none;
+}
+.login-register-wrapper .login-register-tab-list button:focus-visible {
+	box-shadow: 0 0 0 3px rgba(167, 73, 255, 0.12);
+	border-radius: 4px;
+}
 @media only screen and (max-width: 767px) {
 	.login-register-area.pb-100 {
 		padding-bottom: 60px;
