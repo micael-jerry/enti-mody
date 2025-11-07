@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom, Observable } from 'rxjs';
 import { LocalStorageUtil } from '../../shared/utils/local-storage.util';
-import { API_ENDPOINTS } from '../constants/api-endpoints';
-import { AUTH_TOKEN_KEY } from '../constants/auth';
+import { API_ENDPOINTS } from '../constants/api-endpoints.constants';
+import { AUTH_TOKEN_KEY } from '../constants/auth.constants';
 import { AuthLoginDto, AuthLoginResponse } from '../dto/login.dto';
 
 @Injectable()

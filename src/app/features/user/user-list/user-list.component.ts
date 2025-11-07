@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { Role, User } from '../../../core/model/user.model';
 import { NgOptimizedImage } from '@angular/common';
+import { USER_LIST_PAGE_SIZE } from '../../../core/constants/user.constants';
 
 @Component({
 	selector: 'app-user-list',
@@ -24,17 +25,16 @@ export class UserListComponent {
 	readonly searchQuery: WritableSignal<string> = signal('');
 	readonly users: WritableSignal<User[]> = linkedSignal(() => this.fetchedUsers());
 
-	readonly PAGE_SIZE = 10;
 	readonly currentPage = signal(1);
-	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.users().length / this.PAGE_SIZE)));
+	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.users().length / USER_LIST_PAGE_SIZE)));
 	readonly pageNumbers = computed(() =>
 		Array(this.totalPages())
 			.fill(0)
 			.map((_, i) => i + 1),
 	);
 	readonly usersOnCurrentPage: Signal<User[]> = computed(() => {
-		const start = (this.currentPage() - 1) * this.PAGE_SIZE;
-		return this.users().slice(start, start + this.PAGE_SIZE);
+		const start = (this.currentPage() - 1) * USER_LIST_PAGE_SIZE;
+		return this.users().slice(start, start + USER_LIST_PAGE_SIZE);
 	});
 
 	onSearchQueryInput(searchQuery: string): void {

@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageUtil } from '../../shared/utils/local-storage.util';
-import { AUTH_TOKEN_KEY } from '../constants/auth';
+import { AUTH_TOKEN_KEY } from '../constants/auth.constants';
 
 export const authGuard = async (): Promise<boolean> => {
 	const router: Router = inject(Router);
