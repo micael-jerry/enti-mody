@@ -2,30 +2,27 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
-	inject,
-	OnInit,
+	input,
+	linkedSignal,
 	Signal,
 	signal,
 	WritableSignal,
 } from '@angular/core';
 import { Role, User } from '../../../core/model/user.model';
-import { UserService } from '../../../core/service/user.service';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
 	selector: 'app-user-list',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	providers: [UserService],
 	templateUrl: './user-list.component.html',
 	styleUrl: './user-list.component.css',
 	imports: [NgOptimizedImage],
 })
-export class UserListComponent implements OnInit {
-	private readonly userService: UserService = inject(UserService);
+export class UserListComponent {
+	readonly fetchedUsers = input<User[]>([]);
 
-	readonly fetchedUsers: WritableSignal<User[]> = signal([]);
 	readonly searchQuery: WritableSignal<string> = signal('');
-	readonly users: WritableSignal<User[]> = signal([]);
+	readonly users: WritableSignal<User[]> = linkedSignal(() => this.fetchedUsers());
 
 	readonly PAGE_SIZE = 10;
 	readonly currentPage = signal(1);
@@ -39,12 +36,6 @@ export class UserListComponent implements OnInit {
 		const start = (this.currentPage() - 1) * this.PAGE_SIZE;
 		return this.users().slice(start, start + this.PAGE_SIZE);
 	});
-
-	async ngOnInit(): Promise<void> {
-		const users: User[] = await this.userService.getUsers();
-		this.fetchedUsers.set(users);
-		this.users.set(users);
-	}
 
 	onSearchQueryInput(searchQuery: string): void {
 		this.searchQuery.set(searchQuery);
