@@ -13,7 +13,7 @@
 					</div>
 					<div class="tab-content">
 						@if (isLoginPage()) {
-							<app-login />
+							<app-login [loginError]="loginError()" (loginForm)="onLogin($event)" />
 						} @else {
 							<app-under-construction />
 						}

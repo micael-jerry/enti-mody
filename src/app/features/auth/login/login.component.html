@@ -22,8 +22,8 @@
 					</div>
 					<div class="form-group">
 						<button class="login-form-button mb-5" type="submit" [disabled]="authForm.invalid">Login</button>
-						@if (formSubmitError() !== null) {
-							<span class="error-message">{{ formSubmitError() }}</span>
+						@if (!loginError()) {
+							<span class="error-message">{{ loginError() }}</span>
 						}
 					</div>
 				</div>
