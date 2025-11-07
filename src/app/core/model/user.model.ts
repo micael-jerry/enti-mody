@@ -1,9 +1,14 @@
+export type Role = {
+	id: number;
+	name: string;
+};
+
 export type User = {
 	id: number;
 	email: string;
 	name: string;
 	photo: string | null;
-	Roles: number[];
+	Roles: Role[];
 	activeCompany: object;
 	activeMenu: [];
 	defaultRoutes: string[];

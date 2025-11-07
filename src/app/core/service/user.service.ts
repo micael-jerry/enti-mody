@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { User } from '../model/user.model';
 import { lastValueFrom, Observable } from 'rxjs';
-import { API_ENDPOINTS } from '../constants/api-endpoints';
+import { API_ENDPOINTS } from '../constants/api-endpoints.constants';
+import { User } from '../model/user.model';
 
 @Injectable()
 export class UserService {
