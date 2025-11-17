@@ -34,6 +34,7 @@ export class UserComponent implements OnInit {
 		return this.users().slice(start, start + USER_LIST_PAGE_SIZE);
 	});
 	readonly searchQuery = signal<string>('');
+
 	ngOnInit(): void {
 		this.userService.getUsers().then((users: User[]) => this.fetchedUsers.set(users));
 	}
