@@ -13,7 +13,6 @@
 								#searchInputField
 								placeholder="Search"
 								type="text"
-								[value]="searchQuery()"
 								(input)="onSearchQueryInput(searchInputField.value)" />
 						</div>
 					</div>
@@ -28,7 +27,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@for (user of usersOnCurrentPage(); track user.id) {
+								@for (user of users(); track user.id) {
 									<tr>
 										<th scope="row">{{ user.id }}</th>
 										<td class="d-flex align-items-center">
@@ -53,17 +52,25 @@
 					<div class="pro-pagination-style text-center mt-30">
 						<ul>
 							<li>
-								<button class="prev" type="button" [disabled]="currentPage() === 1" (click)="prevPage()">
+								<button
+									class="prev"
+									type="button"
+									[disabled]="currentPage() === 1"
+									(click)="onPageChange(currentPage() - 1)">
 									<i class="fa fa-angle-double-left"></i>
 								</button>
 							</li>
 							@for (p of pageNumbers(); track p) {
 								<li>
-									<button type="button" [class.active]="currentPage() === p" (click)="page = p">{{ p }}</button>
+									<button type="button" [class.active]="currentPage() === p" (click)="onPageChange(p)">{{ p }}</button>
 								</li>
 							}
 							<li>
-								<button class="next" type="button" [disabled]="currentPage() === totalPages()" (click)="nextPage()">
+								<button
+									class="next"
+									type="button"
+									[disabled]="currentPage() === totalPages()"
+									(click)="onPageChange(currentPage() + 1)">
 									<i class="fa fa-angle-double-right"></i>
 								</button>
 							</li>
