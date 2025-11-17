@@ -8,9 +8,10 @@ import {
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { Role, User } from '../../../core/model/user.model';
+import { User } from '../../../core/model/user.model';
 import { NgOptimizedImage } from '@angular/common';
 import { USER_LIST_PAGE_SIZE } from '../../../core/constants/user.constants';
+import { formatUserRoles } from '../../../shared/utils/user.util';
 
 @Component({
 	selector: 'app-user-list',
@@ -21,6 +22,8 @@ import { USER_LIST_PAGE_SIZE } from '../../../core/constants/user.constants';
 })
 export class UserListComponent {
 	readonly fetchedUsers = input<User[]>([]);
+
+	readonly formatUserRoles = formatUserRoles;
 
 	readonly searchQuery: WritableSignal<string> = signal('');
 	readonly users: WritableSignal<User[]> = linkedSignal(() => this.fetchedUsers());
@@ -46,13 +49,6 @@ export class UserListComponent {
 			(user.name + user.email).toLocaleLowerCase().includes(queryIgnoreCase),
 		);
 		this.users.set(filteredUsers);
-	}
-
-	formatUserRoles(roles: Role[]): string {
-		if (roles.length === 0) {
-			return 'Pas de role';
-		}
-		return roles.map((role) => role.name).join(', ');
 	}
 
 	set page(page: number) {
