@@ -11,6 +11,8 @@ import { AuthLoginDto } from '../../../core/dto/login.dto';
 })
 export class LoginComponent {
 	readonly loginError = input<string | null>();
+	readonly isLoading = input.required<boolean>();
+
 	readonly loginForm = output<AuthLoginDto>();
 
 	readonly authForm = new FormGroup({
