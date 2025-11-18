@@ -13,19 +13,21 @@ import { UserService } from '../../core/service/user.service';
 import { User } from '../../core/model/user.model';
 import { UserListComponent } from './user-list/user-list.component';
 import { USER_LIST_PAGE_SIZE } from '../../core/constants/user.constants';
+import { UserListSkeletonComponent } from './user-list-skeleton/user-list-skeleton.component';
 
 @Component({
 	selector: 'app-user',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './user.component.html',
 	styleUrl: './user.component.css',
-	imports: [UserListComponent],
+	imports: [UserListComponent, UserListSkeletonComponent],
 	providers: [UserService],
 })
 export class UserComponent implements OnInit {
 	private readonly userService: UserService = inject(UserService);
 
 	private readonly fetchedUsers: WritableSignal<User[]> = signal([]);
+	readonly isLoading = signal<boolean>(false);
 	readonly users = linkedSignal<User[]>(() => this.fetchedUsers());
 	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.users().length / USER_LIST_PAGE_SIZE)));
 	readonly currentPage = signal(1);
@@ -36,7 +38,11 @@ export class UserComponent implements OnInit {
 	readonly searchQuery = signal<string>('');
 
 	ngOnInit(): void {
-		this.userService.getUsers().then((users: User[]) => this.fetchedUsers.set(users));
+		this.isLoading.set(true);
+		this.userService
+			.getUsers()
+			.then((users: User[]) => this.fetchedUsers.set(users))
+			.finally(() => this.isLoading.set(false));
 	}
 
 	setPage(page: number): void {

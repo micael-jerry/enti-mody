@@ -1,0 +1,53 @@
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-12">
+			<div class="card mb-4">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center mb-3">
+						<div>
+							<div class="sk-title mb-2"></div>
+							<div class="sk-text short"></div>
+						</div>
+						<div>
+							<div class="sk-input"></div>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover align-middle">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Role</th>
+								</tr>
+							</thead>
+							<tbody>
+								@for (i of arrayToEach; track i) {
+									<tr>
+										<td><div class="sk-text"></div></td>
+										<td class="d-flex align-items-center">
+											<div class="sk-avatar me-2"></div>
+											<div class="sk-text long"></div>
+										</td>
+										<td><div class="sk-text long"></div></td>
+										<td><div class="sk-text short"></div></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+					<div class="pro-pagination-style text-center mt-30">
+						<ul>
+							<li><div class="sk-page-btn"></div></li>
+							<li><div class="sk-page-btn"></div></li>
+							<li><div class="sk-page-btn"></div></li>
+							<li><div class="sk-page-btn"></div></li>
+							<li><div class="sk-page-btn"></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

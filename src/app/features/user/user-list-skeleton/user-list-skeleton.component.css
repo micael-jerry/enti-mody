@@ -1,0 +1,56 @@
+@keyframes skeleton-loading {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+.sk-title,
+.sk-text,
+.sk-avatar,
+.sk-input,
+.sk-page-btn {
+	background: linear-gradient(90deg, #ececec 25%, #f7f7f7 50%, #ececec 75%);
+	background-size: 200% 100%;
+	animation: skeleton-loading 1.4s infinite;
+	border-radius: 6px;
+}
+
+.sk-title {
+	width: 180px;
+	height: 22px;
+}
+
+.sk-text {
+	width: 100px;
+	height: 16px;
+}
+
+.sk-text.long {
+	width: 160px;
+}
+
+.sk-text.short {
+	width: 80px;
+}
+
+.sk-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+}
+
+.sk-input {
+	width: 180px;
+	height: 36px;
+	border-radius: 8px;
+}
+
+.sk-page-btn {
+	width: 43px;
+	height: 43px;
+	border-radius: 50%;
+	display: inline-block;
+}

@@ -1,6 +1,10 @@
-<app-user-list
-	[currentPage]="currentPage()"
-	[totalPages]="totalPages()"
-	[users]="usersOnCurrentPage()"
-	(newPage)="setPage($event)"
-	(searchQuery)="onSearchQueryInput($event)" />
+@if (isLoading()) {
+	<app-user-list-skeleton />
+} @else {
+	<app-user-list
+		[currentPage]="currentPage()"
+		[totalPages]="totalPages()"
+		[users]="usersOnCurrentPage()"
+		(newPage)="setPage($event)"
+		(searchQuery)="onSearchQueryInput($event)" />
+}
