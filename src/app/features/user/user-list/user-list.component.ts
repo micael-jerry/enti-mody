@@ -18,11 +18,9 @@ export class UserListComponent {
 	readonly newPage = output<number>();
 	readonly searchQuery = output<string>();
 
-	readonly pageNumbers = computed(() =>
-		Array(this.totalPages())
-			.fill(0)
-			.map((_, i) => i + 1),
-	);
+	readonly pageNumbers = computed(() => {
+		return new Array(this.totalPages()).fill(0).map((_, i) => i + 1);
+	});
 
 	onPageChange(pageNumber: number): void {
 		this.newPage.emit(pageNumber);

@@ -25,7 +25,7 @@ import { USER_LIST_PAGE_SIZE } from '../../core/constants/user.constants';
 export class UserComponent implements OnInit {
 	private readonly userService: UserService = inject(UserService);
 
-	readonly fetchedUsers: WritableSignal<User[]> = signal([]);
+	private readonly fetchedUsers: WritableSignal<User[]> = signal([]);
 	readonly users = linkedSignal<User[]>(() => this.fetchedUsers());
 	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.users().length / USER_LIST_PAGE_SIZE)));
 	readonly currentPage = signal(1);
