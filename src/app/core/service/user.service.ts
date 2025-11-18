@@ -6,7 +6,7 @@ import { User } from '../model/user.model';
 
 @Injectable()
 export class UserService {
-	private http: HttpClient = inject(HttpClient);
+	private readonly http: HttpClient = inject(HttpClient);
 
 	getUsers(): Promise<User[]> {
 		const users$: Observable<User[]> = this.http.get<User[]>(API_ENDPOINTS.user.list);
