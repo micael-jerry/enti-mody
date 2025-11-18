@@ -1,3 +1,4 @@
+<app-user-profile-dialog [open]="userDialogOpen()" [user]="selectedUser()!" (openChange)="userDialogOpen.set($event)" />
 <div class="container mt-3">
 	<div class="row">
 		<div class="col-12">
@@ -28,7 +29,7 @@
 							</thead>
 							<tbody>
 								@for (user of users(); track user.id) {
-									<tr>
+									<tr (click)="onSelectedUser(user)">
 										<th scope="row">{{ user.id }}</th>
 										<td class="d-flex align-items-center">
 											<img

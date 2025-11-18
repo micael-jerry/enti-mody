@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { User } from '../../../core/model/user.model';
 import { NgOptimizedImage } from '@angular/common';
 import { formatUserRoles } from '../../../shared/utils/user.util';
+import { UserProfileDialogComponent } from '../user-profile-dialog/user-profile-dialog.component';
 
 @Component({
 	selector: 'app-user-list',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './user-list.component.html',
 	styleUrl: './user-list.component.css',
-	imports: [NgOptimizedImage],
+	imports: [NgOptimizedImage, UserProfileDialogComponent],
 })
 export class UserListComponent {
 	readonly users = input.required<User[]>();
@@ -21,6 +22,15 @@ export class UserListComponent {
 	readonly pageNumbers = computed(() => {
 		return new Array(this.totalPages()).fill(0).map((_, i) => i + 1);
 	});
+
+	readonly userDialogOpen = signal(false);
+	readonly selectedUser = signal<User | null>(null);
+
+	onSelectedUser(user: User): void {
+		console.log(user);
+		this.selectedUser.set(user);
+		this.userDialogOpen.set(true);
+	}
 
 	onPageChange(pageNumber: number): void {
 		this.newPage.emit(pageNumber);
