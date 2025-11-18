@@ -1,0 +1,8 @@
+@if (open()) {
+	<div class="overlay">
+		<div [class]="`modal-content ${class()}`">
+			<button class="close-btn" type="button" (click)="onOpenChange(false)">x</button>
+			<ng-content />
+		</div>
+	</div>
+}
