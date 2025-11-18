@@ -3,7 +3,6 @@ import {
 	Component,
 	computed,
 	inject,
-	linkedSignal,
 	OnInit,
 	Signal,
 	signal,
@@ -28,14 +27,23 @@ export class UserComponent implements OnInit {
 
 	private readonly fetchedUsers: WritableSignal<User[]> = signal([]);
 	readonly isLoading = signal<boolean>(false);
-	readonly users = linkedSignal<User[]>(() => this.fetchedUsers());
-	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.users().length / USER_LIST_PAGE_SIZE)));
 	readonly currentPage = signal(1);
+	readonly searchQuery = signal<string>('');
+
+	readonly filteredUsers = computed<User[]>(() => {
+		const queryIgnoreCase = this.searchQuery().toLocaleLowerCase();
+		if (!queryIgnoreCase) {
+			return this.fetchedUsers();
+		}
+		return this.fetchedUsers().filter((user) => {
+			return (user.name + user.email).toLocaleLowerCase().includes(queryIgnoreCase);
+		});
+	});
+	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.filteredUsers().length / USER_LIST_PAGE_SIZE)));
 	readonly usersOnCurrentPage: Signal<User[]> = computed(() => {
 		const start = (this.currentPage() - 1) * USER_LIST_PAGE_SIZE;
-		return this.users().slice(start, start + USER_LIST_PAGE_SIZE);
+		return this.filteredUsers().slice(start, start + USER_LIST_PAGE_SIZE);
 	});
-	readonly searchQuery = signal<string>('');
 
 	ngOnInit(): void {
 		this.isLoading.set(true);
@@ -53,11 +61,5 @@ export class UserComponent implements OnInit {
 	onSearchQueryInput(searchQuery: string): void {
 		this.searchQuery.set(searchQuery);
 		this.currentPage.set(1);
-
-		const queryIgnoreCase = searchQuery.toLocaleLowerCase();
-		const filteredUsers = this.fetchedUsers().filter((user) =>
-			(user.name + user.email).toLocaleLowerCase().includes(queryIgnoreCase),
-		);
-		this.users.set(filteredUsers);
 	}
 }
