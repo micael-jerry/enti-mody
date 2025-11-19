@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output } from '@angular/core';
 
 @Component({
 	selector: 'app-dialog',
@@ -14,5 +14,12 @@ export class DialogComponent {
 
 	onOpenChange(open: boolean): void {
 		this.openChange.emit(open);
+	}
+
+	@HostListener('window:keydown.esc', ['$event'])
+	handleKeyEsc(event: KeyboardEvent): void {
+		if (event.key === 'Escape') {
+			this.onOpenChange(false);
+		}
 	}
 }
