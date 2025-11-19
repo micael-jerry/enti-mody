@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output } from '@angular/core';
 import { User } from '../../../core/model/user.model';
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
@@ -20,5 +20,12 @@ export class UserProfileDialogComponent {
 
 	onOpenChange(isOpen: boolean): void {
 		this.openChange.emit(isOpen);
+	}
+
+	@HostListener('window:keydown.esc', ['$event'])
+	handleKeyEsc(event: KeyboardEvent): void {
+		if (event.key === 'Escape') {
+			this.onOpenChange(false);
+		}
 	}
 }
