@@ -12,6 +12,7 @@ import { FormatUserRolePipe } from '../../../core/pipe/format-user-role.pipe';
 	imports: [NgOptimizedImage, UserProfileDialogComponent, FormatUserRolePipe],
 })
 export class UserListComponent {
+	// TODO: mettre un skeleton spécifique pour les donner fetcher, (pas de skeleton general)
 	readonly users = input.required<User[]>();
 	readonly currentPage = input.required<number>();
 	readonly totalPages = input.required<number>();
