@@ -60,3 +60,9 @@
 .close-button:hover {
 	background-color: #0056b3;
 }
+
+.list-in-string {
+	background: #f1f3f5;
+	border-radius: 12px;
+	padding: 0.125rem 0.5rem;
+}

@@ -1,8 +1,24 @@
 <app-dialog class="user-profile-dialog" [open]="open()" (openChange)="onOpenChange($event)">
 	@if (user() !== null) {
 		<div class="profile-container">
+			<img
+				class="profile-picture"
+				height="512"
+				ngSrc="assets/img/default-avatar.png"
+				width="512"
+				[alt]="user()?.name" />
 			<h2 class="profile-name">{{ user()?.name }}</h2>
 			<p class="profile-email">{{ user()?.email }}</p>
+			<div class="profile-details">
+				<span>
+					<strong>Rôles:</strong>
+					<span class="list-in-string">{{ user()?.Roles | formatUserRole }}</span>
+				</span>
+				<span>
+					<strong>Entreprises</strong>
+					<span class="list-in-string">{{ user()?.Companies | formatUserCompanies }}</span>
+				</span>
+			</div>
 			<button class="close-button" type="button" (click)="onOpenChange(false)">Fermer</button>
 		</div>
 	}
