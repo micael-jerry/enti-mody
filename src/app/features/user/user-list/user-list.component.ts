@@ -27,7 +27,6 @@ export class UserListComponent {
 	readonly selectedUser = signal<User | null>(null);
 
 	onSelectedUser(user: User): void {
-		console.log(user);
 		this.selectedUser.set(user);
 		this.userDialogOpen.set(true);
 	}
