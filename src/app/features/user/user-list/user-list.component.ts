@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { User } from '../../../core/model/user.model';
 import { NgOptimizedImage } from '@angular/common';
-import { formatUserRoles } from '../../../shared/utils/user.util';
 import { UserProfileDialogComponent } from '../user-profile-dialog/user-profile-dialog.component';
+import { FormatUserRolePipe } from '../../../core/pipe/format-user-role.pipe';
 
 @Component({
 	selector: 'app-user-list',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './user-list.component.html',
 	styleUrl: './user-list.component.css',
-	imports: [NgOptimizedImage, UserProfileDialogComponent],
+	imports: [NgOptimizedImage, UserProfileDialogComponent, FormatUserRolePipe],
 })
 export class UserListComponent {
 	readonly users = input.required<User[]>();
@@ -39,6 +39,4 @@ export class UserListComponent {
 	onSearchQueryInput(searchQuery: string): void {
 		this.searchQuery.emit(searchQuery);
 	}
-
-	protected readonly formatUserRoles = formatUserRoles;
 }

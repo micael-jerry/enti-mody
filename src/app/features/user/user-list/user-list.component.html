@@ -41,7 +41,7 @@
 											<p class="fw-bold">{{ user.name }}</p>
 										</td>
 										<td>{{ user.email }}</td>
-										<td>{{ formatUserRoles(user.Roles) }}</td>
+										<td>{{ user.Roles | formatUserRole }}</td>
 									</tr>
 								}
 								@if (users().length === 0) {
