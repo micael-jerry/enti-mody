@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, HostListener, input, output } from 
 })
 export class DialogComponent {
 	readonly open = input<boolean>(false);
+	readonly closeOnClickOverlay = input<boolean>(false);
 	readonly class = input<string>('');
 
 	readonly openChange = output<boolean>();
@@ -19,6 +20,13 @@ export class DialogComponent {
 	@HostListener('window:keydown.esc', ['$event'])
 	handleKeyEsc(event: KeyboardEvent): void {
 		if (event.key === 'Escape') {
+			this.onOpenChange(false);
+		}
+	}
+
+	@HostListener('click', ['$event.target'])
+	handleClickOverlay(target: HTMLElement): void {
+		if (target.classList.contains('modal-overlay') && this.closeOnClickOverlay()) {
 			this.onOpenChange(false);
 		}
 	}

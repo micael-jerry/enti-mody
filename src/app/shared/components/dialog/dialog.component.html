@@ -1,7 +1,7 @@
 @if (open()) {
-	<div class="overlay">
+	<div class="modal-overlay">
 		<div [class]="`modal-content ${class()}`">
-			<button class="close-btn" type="button" (click)="onOpenChange(false)">x</button>
+			<button class="close-btn" type="button" (click)="onOpenChange(false)">&times;</button>
 			<ng-content />
 		</div>
 	</div>
