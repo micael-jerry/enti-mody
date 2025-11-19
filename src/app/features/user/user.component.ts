@@ -36,7 +36,10 @@ export class UserComponent implements OnInit {
 			return this.fetchedUsers();
 		}
 		return this.fetchedUsers().filter((user) => {
-			return (user.name + user.email).toLocaleLowerCase().includes(queryIgnoreCase);
+			return (
+				user.name.toLocaleLowerCase().includes(queryIgnoreCase) ||
+				user.email.toLocaleLowerCase().includes(queryIgnoreCase)
+			);
 		});
 	});
 	readonly totalPages = computed(() => Math.max(1, Math.ceil(this.filteredUsers().length / USER_LIST_PAGE_SIZE)));
