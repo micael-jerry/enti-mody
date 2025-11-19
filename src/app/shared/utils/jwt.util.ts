@@ -11,8 +11,8 @@ export class JwtUtil {
 
 	isExpiredToken(token: string): boolean {
 		const decodedToken: JwtPayload = this.decodeToken(token);
-		const currentTime = Date.now();
+		const currentTimeInSecond = Math.round(Date.now() / 1000);
 
-		return !(!decodedToken.exp || currentTime > decodedToken.exp);
+		return !(!decodedToken.exp || currentTimeInSecond > decodedToken.exp);
 	}
 }
