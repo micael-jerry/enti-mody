@@ -19,7 +19,7 @@ export const tokenInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn)
 
 	if (jwtUtil.isExpiredToken(token)) {
 		sessionStorageUtil.removeItem(AUTH_TOKEN_KEY);
-		router.navigate(['/auth']).catch((err) => console.error(err));
+		router.navigate(['/auth']).catch((err: unknown) => throwError(() => err));
 		return throwError(() => new Error('Token expired'));
 	}
 
